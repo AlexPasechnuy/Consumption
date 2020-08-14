@@ -1,6 +1,8 @@
 package com.example.consumption;
 
-public class Record {
+import java.io.Serializable;
+
+public class Record implements Serializable {
     public long gasVol, odometer;
     public String comment;
     public double consump;
