@@ -34,4 +34,8 @@ public class RecordsHistory implements Serializable {
         }
         return hist;
     }
+
+    public List<Record> getRecords(){
+        return records;
+    }
 }

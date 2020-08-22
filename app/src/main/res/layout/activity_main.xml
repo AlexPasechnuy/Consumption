@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/logBtn"
         android:layout_width="150dp"
         android:layout_height="55dp"
         android:background="@drawable/button"
@@ -21,16 +21,16 @@
         app:layout_constraintVertical_bias="0.506" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/addRecBtn"
         android:layout_width="150dp"
         android:layout_height="55dp"
         android:background="@drawable/button"
-        android:text="Add record"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        android:text="Add Record"
+        app:layout_constraintBottom_toTopOf="@+id/logBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf="@+id/comment" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -40,42 +40,43 @@
         app:layout_constraintGuide_begin="593dp" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/odomField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Odometer"
         android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/editText2"
+        app:layout_constraintBottom_toTopOf="@+id/gasVolField"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/gasVolField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Volume of gas"
         android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/editText3"
+        app:layout_constraintBottom_toTopOf="@+id/comment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/odomField" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/comment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Comment"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/addRecBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/gasVolField" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
