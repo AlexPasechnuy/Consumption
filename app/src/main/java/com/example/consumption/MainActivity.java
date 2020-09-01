@@ -8,10 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.io.FileNotFoundException;
+
 
 public class MainActivity extends AppCompatActivity {
 
-    RecordsHistory log = RecordsHistory.deserialize();
+    RecordsHistory log = new RecordsHistory();
 
     EditText odometer, gasVol, comment;
 
@@ -21,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        try{log = RecordsHistory.deserialize();}
+        catch(FileNotFoundException ex){log.serialize();}
         addListenerOnButton();
     }
 
@@ -35,9 +39,13 @@ public class MainActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        log.add(Integer.parseInt(odometer.getText().toString()),
-                                Integer.parseInt(gasVol.getText().toString()),
-                                comment.getText().toString());
+                        try {
+                            log.add(Long.parseLong(odometer.getText().toString()),
+                                    Long.parseLong(gasVol.getText().toString()),
+                                    comment.getText().toString());
+                        }catch (ArrayIndexOutOfBoundsException ex){
+
+                        }
                         log.serialize();
                     }
                 }

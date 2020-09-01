@@ -7,6 +7,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 public class LogActivity extends AppCompatActivity {
@@ -16,12 +17,14 @@ public class LogActivity extends AppCompatActivity {
 
     TableLayout table;
 
-    RecordsHistory log = RecordsHistory.deserialize();
+    RecordsHistory log = new RecordsHistory();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log);
+        try{log = RecordsHistory.deserialize();}
+        catch(FileNotFoundException ex){log.serialize();}
         table = (TableLayout)findViewById(R.id.table);
         List<Record> records = log.getRecords();
 
