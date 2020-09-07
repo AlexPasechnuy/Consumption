@@ -23,8 +23,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        try{log = RecordsHistory.deserialize();}
-        catch(FileNotFoundException ex){log.serialize();}
+        log = RecordsHistory.read(this);
         addListenerOnButton();
     }
 
@@ -40,13 +39,15 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         try {
-                            log.add(Long.parseLong(odometer.getText().toString()),
+                            new Record(Long.parseLong(odometer.getText().toString()),
                                     Long.parseLong(gasVol.getText().toString()),
-                                    comment.getText().toString());
+                                    comment.getText().toString()).write(MainActivity.this);
                         }catch (ArrayIndexOutOfBoundsException ex){
 
                         }
-                        log.serialize();
+                        odometer.setText("");
+                        gasVol.setText("");
+                        comment.setText("");
                     }
                 }
         );

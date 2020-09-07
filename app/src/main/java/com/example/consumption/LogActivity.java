@@ -23,8 +23,7 @@ public class LogActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log);
-        try{log = RecordsHistory.deserialize();}
-        catch(FileNotFoundException ex){log.serialize();}
+        log = RecordsHistory.read(this);
         table = (TableLayout)findViewById(R.id.table);
         List<Record> records = log.getRecords();
 
